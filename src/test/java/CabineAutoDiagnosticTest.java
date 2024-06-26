@@ -5,31 +5,52 @@ class CabineAutoDiagnosticTest {
 
     @Test
     void testProblemeCardiaque() {
-        assertEquals("Cardiologie", CabineAutoDiagnostic.diagnostiquer(33));
+        String resultat = CabineAutoDiagnostic.diagnostiquer(33);
+        System.out.println("Test problème cardiaque (33) : " + resultat);
+        assertEquals("Cardiologie", resultat);
     }
 
     @Test
     void testFracture() {
-        assertEquals("Traumatologie", CabineAutoDiagnostic.diagnostiquer(55));
+        String resultat = CabineAutoDiagnostic.diagnostiquer(55);
+        System.out.println("Test fracture (55) : " + resultat);
+        assertEquals("Traumatologie", resultat);
     }
 
     @Test
     void testProblemesMultiples() {
-        assertEquals("Cardiologie, Traumatologie", CabineAutoDiagnostic.diagnostiquer(15));
+        String resultat = CabineAutoDiagnostic.diagnostiquer(15);
+        System.out.println("Test problèmes multiples (15) : " + resultat);
+        assertEquals("Cardiologie, Traumatologie", resultat);
     }
+    /*
+    testAucunePathologie vérifie que le système peut correctement identifier et gérer les cas où aucune pathologie n'est détectée
+     */
 
     @Test
     void testAucunePathologie() {
-        assertEquals("Aucune pathologie détectée", CabineAutoDiagnostic.diagnostiquer(7));
+        String resultat = CabineAutoDiagnostic.diagnostiquer(7);
+        System.out.println("Test aucune pathologie (7) : " + resultat);
+        assertEquals("Aucune pathologie détectée", resultat);
     }
+
+    /*
+    Pour un index de 0, le système recommande bien les deux services médicaux (Cardiologie et Traumatologie)
+     */
 
     @Test
     void testIndexZero() {
-        assertEquals("Cardiologie, Traumatologie", CabineAutoDiagnostic.diagnostiquer(0));
+        String resultat = CabineAutoDiagnostic.diagnostiquer(0);
+        System.out.println("Test index zéro (0) : " + resultat);
+        assertEquals("Cardiologie, Traumatologie", resultat);
     }
-
+    /*
+    Gestion des entrées inattendues ou erronées pour s'assurer que le système ne plante pas
+     */
     @Test
     void testIndexNegatif() {
-        assertEquals("Aucune pathologie détectée", CabineAutoDiagnostic.diagnostiquer(-1));
+        String resultat = CabineAutoDiagnostic.diagnostiquer(-1);
+        System.out.println("Test index négatif (-1) : " + resultat);
+        assertEquals("Aucune pathologie détectée", resultat);
     }
 }

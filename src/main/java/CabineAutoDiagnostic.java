@@ -20,6 +20,9 @@ public class CabineAutoDiagnostic {
             return "Aucune pathologie détectée";
         }
 
+        /*
+       Concatenation des services.
+        */
         return String.join(", ", services);
     }
 
